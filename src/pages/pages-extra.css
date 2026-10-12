@@ -1,0 +1,4 @@
+/* page-scoped additions appended by feature modules */
+
+/* === shared tag-on chip === */
+.tag-on { background: var(--accent-dim); border-color: rgba(212,255,63,0.4); color: var(--accent); font-weight: 700; }

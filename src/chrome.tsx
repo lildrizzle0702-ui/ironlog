@@ -29,7 +29,7 @@ export function TabBar({ routeName }: { routeName: string }) {
   )
 }
 
-export function Page({ title, right, children }: { title?: string; right?: ReactNode; children: ReactNode; back?: () => void }) {
+export function Page({ title, right, children }: { title?: string; right?: ReactNode; children?: ReactNode; back?: () => void }) {
   return (
     <main className="app-main">
       {(title || right) && (
