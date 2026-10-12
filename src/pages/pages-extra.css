@@ -2,3 +2,8 @@
 
 /* === shared tag-on chip === */
 .tag-on { background: var(--accent-dim); border-color: rgba(212,255,63,0.4); color: var(--accent); font-weight: 700; }
+
+/* === stats/charts === */
+.heat-grid { display: grid; gap: 3px; }
+.stat-card-value { font-size: 28px; font-weight: 800; margin-top: 2px; }
+.chart-legend-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 5px; }
