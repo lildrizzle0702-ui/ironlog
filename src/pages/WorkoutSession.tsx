@@ -86,6 +86,17 @@ export default function WorkoutSession() {
     getDB().then((db) => db.get('templates', workout.templateId!)).then((t) => setTemplate(t ?? null))
   }, [workout?.templateId])
 
+  const ssLetters = useMemo(() => {
+    const m = new Map<string, string>()
+    let i = 0
+    for (const e of entries) {
+      if (e.supersetGroupId && !m.has(e.supersetGroupId)) {
+        m.set(e.supersetGroupId, String.fromCharCode(65 + i++))
+      }
+    }
+    return m
+  }, [entries])
+
   // PR overlay auto-dismiss
   useEffect(() => {
     if (!prOverlay) return
@@ -190,17 +201,6 @@ export default function WorkoutSession() {
     setConfirmDelEx(null)
     await reload()
   }
-
-  const ssLetters = useMemo(() => {
-    const m = new Map<string, string>()
-    let i = 0
-    for (const e of entries) {
-      if (e.supersetGroupId && !m.has(e.supersetGroupId)) {
-        m.set(e.supersetGroupId, String.fromCharCode(65 + i++))
-      }
-    }
-    return m
-  }, [entries])
 
   const totalSets = Object.values(setsByEx).reduce((a, l) => a + l.filter((s) => s.done).length, 0)
   const totalVol = Object.values(setsByEx).flat().filter((s) => s.done && s.type !== '热身').reduce((a, s) => a + s.weightKg * s.reps, 0)
